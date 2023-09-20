@@ -31,27 +31,24 @@ public class DeleteLead {
 		page.findElement(By.name("id")).sendKeys("10059");
 		page.findElement(By.xpath("//button[contains(text(),'Find Leads')]")).click();
 		String s1="No records to display";
-		WebElement aa= page.findElement(By.xpath("//div[text()='No records to display']"));
-		  System.out.println(aa.getText());
-		   
-		  if(aa.equals(s1)) {
-			  System.out.println("No records to display");
-		   }else {
-		   System.out.println("LeadId is found");
-		  }
+		 page.findElement(By.xpath("//div[text()='No records to display']")).getText();
+		  String s2 ="No records to display";
+			String Lead = page.getTitle();
+			System.out.println(Lead);
+			
+			if (Lead.equals(s2))
+			{
+				System.out.println("No records to display");
+			}
+				else {
+					System.out.println("Records found");
+				}
+		
+		}
+}
+		
+		 
 		  //page.close();
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	}
 
-}
