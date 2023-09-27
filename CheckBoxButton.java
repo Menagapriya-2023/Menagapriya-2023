@@ -1,6 +1,6 @@
 package week3.day1;
 
-public class CheckBoxButton extends RadioButton {
+public class CheckBoxButton extends Button {
 	
 	public void clickCheckButton() {
 		
