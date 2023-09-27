@@ -1,8 +1,10 @@
 package week3.day2.Assignments;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Ajio {
@@ -19,19 +21,25 @@ public class Ajio {
 		driver.findElement(By.xpath("//span[@class='ic-search']")).click();
 		
 		//click men in gender
-		driver.findElement(By.xpath("//label[text()='Men (3,328)']")).click();
+		driver.findElement(By.xpath("//label[contains(text(),'Men')]")).click();
 		//click fashion bags
-		driver.findElement(By.xpath("//label[text()='Fashion Bags (921)']")).click();
+		driver.findElement(By.xpath("//label[contains(text(),'Fashion Bags')]")).click();
 		
 		//print the numbers of bags found
 		
 		//String str=driver.findElement(By.id("products")).getText();
-		String str=driver.findElement(By.xpath("//div[text()=' Items Found']")).getText();
+		String str=driver.findElement(By.xpath("//div[@class='length']")).getText();
 		System.out.println(str);
 		
 		//print the list of brands found in the list
-		String str1=driver.findElement(By.xpath("//div[@class='brand']")).getText();
-		System.out.println(str1);
+		List <WebElement> bags= driver.findElements(By.xpath("//div[@class='brand']"));
+		System.out.println(bags);
+		
+		for(int i=0;i<bags.size();i++)
+		{
+			String text=bags.get(i).getText();
+			System.out.println(text);
+		}
 
 	}
 
