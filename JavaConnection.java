@@ -33,20 +33,7 @@ public class JavaConnection implements DatabaseConnection {
 
 	}
 
-	public void connect(int a) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void disconnect(int b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void executeUpdate(int c) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	
 
