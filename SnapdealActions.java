@@ -6,6 +6,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
@@ -72,9 +73,14 @@ public class SnapdealActions {
 		
 		// To click quick view button
 		driver.findElement(By.xpath("//div[@class='center quick-view-bar  btn btn-theme-secondary  ']")).click();
+		//To handle windows
+		Set<String> windowHandles = driver.getWindowHandles();
+
+		List<String> windows = new ArrayList<String>(windowHandles);
+		driver.switchTo().window(windows.get(1));
 		
 		// Print the cost and the discount percentage.
-		String text = driver.findElement(By.xpath("//span[@class='lfloat product-price']")).getText();
+		String text = driver.findElement(By.xpath("//span[text()='25% Off']")).getText();
 		System.out.println("Discounted price is " + text);
 
 		// step-1-snap
@@ -85,6 +91,8 @@ public class SnapdealActions {
 
 		// step3
 		FileUtils.copyFile(source, destination);
+		
+		driver.switchTo().window(windows.get(0));
 
 		// driver.close();
 
