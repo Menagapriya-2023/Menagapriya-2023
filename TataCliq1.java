@@ -32,16 +32,15 @@ public class TataCliq1 {
 
 		// To mouseover on Watches & Accessories
 		WebElement element = driver.findElement(By.xpath("//div[text()='Watches & Accessories']"));
-		Actions obj1 = new Actions(driver);
-		// perform()-mandatory
-		obj1.moveToElement(mouseOver).perform();
 
-		driver.findElement(By.id("wzrk-cancel")).click();
-		
+		// perform()-mandatory
+		obj.moveToElement(element).perform();
+
 		// To select first resulting brand
-		//driver.findElement(By.xpath("//div[text()='Casio']")).click();
-		
-		driver.findElement(By.linkText("Lavie")).click();
+		driver.findElement(By.xpath("//div[text()='Casio']")).click();
+
+		driver.findElement(By.xpath("//button[text()='Ask me later']")).click();
+
 		Thread.sleep(3000);
 
 		// To sort by New Arrivals
@@ -59,9 +58,10 @@ public class TataCliq1 {
 
 		System.out.println("Price for all watches " + total);
 
+		Thread.sleep(3000);
+
 		// To click on the first resulting watch
-		String firstwatch = driver.findElement(By.xpath("//div[@class='ProductModule__dummyDiv']")).getText();
-		System.out.println(firstwatch);
+		driver.findElement(By.xpath("//a[@aria-label='Casio']/parent::div")).click();
 
 		Set<String> windowHandles = driver.getWindowHandles();
 		System.out.println(windowHandles);
@@ -71,7 +71,7 @@ public class TataCliq1 {
 		// To compare the price
 		String price = driver.findElement(By.xpath("//h3[text()='MRP:  ₹9195']")).getText();
 		System.out.println(price);
-		String s1="MRP:  ₹9195";
+		String s1 = "MRP: ₹9195";
 
 		if (s1.equals(price)) {
 			System.out.println("Watch price is verified");
@@ -82,12 +82,16 @@ public class TataCliq1 {
 		}
 
 		// To click on Add to bag
-		driver.findElement(By.xpath("//span[text()='GO TO BAG']")).click();
+		driver.findElement(By.xpath("//span[text()='ADD TO BAG']")).click();
 
 		// To get the count in cart
 		String cart = driver.findElement(By.xpath("//span[@class='DesktopHeader__cartCount']")).getText();
 		System.out.println("No.of items in the cart is " + cart);
 
+		// To show my bag
+		driver.findElement(By.xpath("//div[@class='DesktopHeader__myBagShow']")).click();
+		Thread.sleep(2000);
+		
 		// To take screenshot
 		// step-1-snap
 		File scr = driver.getScreenshotAs(OutputType.FILE);
@@ -100,6 +104,7 @@ public class TataCliq1 {
 
 		driver.switchTo().window(windows.get(0));
 		// driver.close();
+		// driver.quit();
 	}
 
 }
